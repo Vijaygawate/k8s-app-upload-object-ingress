@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+   name: webingress
+   namespace: devproject
+spec:
+   ingressClassName: nginx
+   rules:
+   - host: "www.balatech.tk"
+     http:
+       paths:
+       - path: "/"
+         pathType: Prefix
+         backend:
+           service:
+            name: websvc
+            port:
+             number: 80
+

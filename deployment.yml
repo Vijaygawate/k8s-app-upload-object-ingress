@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: frontend
+ namespace: devproject
+spec:
+ replicas: 1
+ selector:
+   matchLabels:
+    apptype: web
+    env: dev
+ template:
+   metadata:
+     name: webtemp
+     labels:
+       apptype: web
+       env: dev
+   spec:
+    containers:
+    - image: vijaygawate/k8s-app:latest
+      name: webcon
+      imagePullPolicy: Always
+      ports:
+      - name: tomcat
+        containerPort: 8080
+        protocol: TCP
