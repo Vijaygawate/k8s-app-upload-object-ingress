@@ -3,14 +3,14 @@ kind: StatefulSet
 metadata:
  name: mongoinst
 spec:
- volumeClaimTemplates: #Reclaim policy: data will be re added whenever pod deleted
-   - metadata:
-      name: data
-     spec:
-      accessModes: [ "ReadWriteOnce" ]
-      resources:
-        requests:
-          storage: 5Gi
+ # volumeClaimTemplates: #Reclaim policy: data will be re added whenever pod deleted
+ #   - metadata:
+ #      name: data
+ #     spec:
+ #      accessModes: [ "ReadWriteOnce" ]
+ #      resources:
+ #        requests:
+ #          storage: 5Gi
  replicas: 1
  serviceName: mongosvc
  selector:
@@ -27,7 +27,7 @@ spec:
     volumes:
     - name: dbvolume
       persistentVolumeClaim:
-        claimName: devpvc
+        claimName: ebs-mysql-pv-claim
 
     containers:
     - image: sudarshanlnx/mongo:latest
