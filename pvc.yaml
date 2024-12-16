@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: devpvc
-spec:
+  name: ebs-mysql-pv-claim
+spec: 
   accessModes:
     - ReadWriteOnce
-  storageClassName: datastore
-  resources:
+  storageClassName: ebs-sc
+  resources: 
     requests:
-      storage: 5Gi
+      storage: 4Gi
